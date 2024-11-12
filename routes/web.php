@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FilmController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function(){
-    
+    Route::resource('films', FilmController::class);
 });
